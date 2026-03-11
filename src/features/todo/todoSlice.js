@@ -18,15 +18,16 @@ export const todoSlice = createSlice({
 		},
 		deleteTodo: (state,action) => {
 			
-			 state.todos = state.todos.filer((todo) => todo.id != action.payload)
+			 state.todos = state.todos.filter((todo) => todo.id != action.payload)
 		},
 		marksAsDone: (state, action) => {
 			state.todos = state.todos.map((todo) => {
 				if (todo.id === action.payload) {
 					todo.isDone = true;
 				}
+				return todo;
 			})
 		}
 	}
 })
-export default todoSlice.reducers;
+export default todoSlice.reducer;
